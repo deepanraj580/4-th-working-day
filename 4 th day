@@ -1,0 +1,30 @@
+import datetime 
+import calendar 
+year=int(input("Year:"))
+fourthwrk=[]
+def holy(my,mo):
+    holidays=((1,1),(12,2),(4,4),(2,5),(3,6),(2,7),(2,8),(4,9),(3,12))#holidays of 2019(day/month)
+    for hol in holidays:
+        (date,month)=hol
+        if(mo==month):
+            temp={0,date}
+            return (my-temp)
+    else:
+        if(0 in my)==True:
+            my.remove(0)
+            return my
+        else:
+            return my
+for i in range(1,13):    
+    s=calendar.monthcalendar(year,i)
+    myweek1=s[0][0:5]
+    myweek2=s[1][0:5]
+    myweek3=s[2][0:5]
+    myweek=myweek1+myweek2+myweek3
+    my=set(myweek)
+    m=holy(my,i)
+    listed=list(m)
+    fourth=listed[1]
+    dayoffour=datetime.date.today().replace(day=fourth,month=i,year=year)
+    fourthwrk.append(dayoffour)
+print(fourthwrk)
